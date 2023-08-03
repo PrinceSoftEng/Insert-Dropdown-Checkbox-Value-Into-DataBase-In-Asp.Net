@@ -24,11 +24,6 @@ namespace Insert_Dropdown_Checkbox_Value_Into_DataBase_In_Asp.Net
         {
             clsBalUsertoRole objBalUTR = new clsBalUsertoRole();
             return objBalUTR.BindRolesCheckbox();
-        }        
-        public Int32 InsertUserToRole(clsDalUsertoRole objDalUTR)
-        {
-            clsBalUsertoRole objBalUTR = new clsBalUsertoRole();
-            return  objBalUTR.InsertUserToRole(objDalUTR);
-        }
+        }       
     }
 }

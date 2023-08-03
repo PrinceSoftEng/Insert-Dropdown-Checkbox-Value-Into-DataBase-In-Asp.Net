@@ -5,23 +5,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" rel="stylesheet" />    
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <h2>Select UserName:</h2>
-            <asp:DropDownList ID="ddlUserName" runat="server">
-            </asp:DropDownList>
+        <div>            
+            <b><asp:Label ID ="lblUsers" runat="server" Text="Select Users:"></asp:Label></b>
+            <asp:DropDownList ID="ddlUsers" runat="server" DataTextField="UserName" DataValueField="UserId" Width="12%"></asp:DropDownList>
+            <script>
+                $('#<%=ddlUsers.ClientID%>').chosen();
+            </script>
             <br />
-            <h2>Select Roles:</h2>
-            <asp:CheckBoxList ID="chkRoles" runat="server">
-            </asp:CheckBoxList>
             <br />
-            <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
+            <b><asp:Label ID ="lblRoles" runat="server" Text="Select Roles:"></asp:Label></b>
+            <asp:RadioButtonList ID ="rblRoles" runat="server" DataTextField="roleName" DataValueField="roleId"></asp:RadioButtonList>
+            
             <br />
-            <hr />
-            <asp:GridView ID="gvGet" runat="server" AutoGenerateColumns="true">
+            <br />
+            <asp:GridView ID ="gvUTR" runat="server" AutoGenerateColumns="false">
+                <Columns>
+                    <asp:BoundField DataField="Id" HeaderText="Id" />
+                    <asp:BoundField DataField="UserId" HeaderText="User Id" />
+                    <asp:BoundField DataField="roleId" HeaderText="Role Id" />
+                </Columns>
             </asp:GridView>
+            <br />
+            <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
         </div>
     </form>
 </body>

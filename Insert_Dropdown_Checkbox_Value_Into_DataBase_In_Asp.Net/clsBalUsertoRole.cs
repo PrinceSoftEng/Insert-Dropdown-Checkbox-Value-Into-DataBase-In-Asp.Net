@@ -64,23 +64,6 @@ namespace Insert_Dropdown_Checkbox_Value_Into_DataBase_In_Asp.Net
                     }
                 }
             }
-        }
-
-        public Int32 InsertUserToRole(clsDalUsertoRole objDalUTR)
-        {
-            using (SqlConnection con = new SqlConnection(constring))
-            {
-                using (SqlCommand cmd = new SqlCommand("Insert Into tblUserToRole (UserId,roleId) values (@UserId,@roleId)", con))
-                {
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@UserId", objDalUTR.userId);
-                    cmd.Parameters.AddWithValue("@roleId",objDalUTR.roleId);
-                    con.Open();
-                    int i = cmd.ExecuteNonQuery();
-                    con.Close();
-                    return i;                    
-                }
-            }
-        }
+        }        
     }
 }
